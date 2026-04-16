@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado da Eficiência Energética</title>
+    <!-- O link do CSS está correto usando url_for -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- O cabeçalho usa a classe que tem a imagem de fundo no seu CSS -->
+    <header class="header">
+        <div class="header__text">
+            <h1>Sua Eficiência Energética</h1>
+            <p>Confira o resultado do seu consumo estimado</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção de Resultado: usando a classe .main__rez do seu CSS -->
+        <section class="main__rez">
+            <h2 class="main__title main__title--margin">
+                Seu consumo estimado é de:   
+
+                <strong style="color: #0EB07C; font-size: 2.5rem;">{{ result }} kWh</strong>
+            </h2>
+        </section>
+
+        <hr style="border: 1px solid #eee; margin: 50px 0;">
+
+        <!-- Seção do Formulário: Aplicando as classes .form, .user e .user-info -->
+        <section class="contact-form">
+            <h3 class="main__title" style="margin-bottom: 40px;">Gostaria de receber um relatório completo?</h3>
+            
+            <form action="{{ url_for('submit_form') }}" method="post" class="form">
+                <div class="user">
+                    <!-- Coluna 1: Informações Pessoais -->
+                    <div class="user-info">
+                        <p>
+                            <label for="name">Seu Nome:</label>
+                            <input type="text" name="name" id="name" placeholder="Digite seu nome completo" required>
+                        </p>
+                        <p>
+                            <label for="email">Seu E-mail:</label>
+                            <input type="email" name="email" id="email" placeholder="exemplo@email.com" required>
+                        </p>
+                    </div>
+
+                    <!-- Coluna 2: Endereço e Data (usando a classe .address-date do seu CSS) -->
+                    <div class="address-date">
+                        <p>
+                            <label for="address">Seu Endereço:</label>
+                            <input type="text" name="address" id="address" placeholder="Rua, Número, Bairro" required>
+                        </p>
+                        <p>
+                            <label for="date">Data Sugerida para Visita:</label>
+                            <input type="date" name="date" id="date" required>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Botão de Envio: usando a classe .button do seu CSS -->
+                <button type="submit" class="button">Enviar e Receber Dicas</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
